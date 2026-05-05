@@ -1,4 +1,38 @@
 /* ========================
+   HAMBURGER MENU — Mobile Navigation
+   ======================== */
+(function () {
+  const hamburger = document.getElementById('hamburger');
+  const navMenu   = document.querySelector('.nav-menu');
+  const overlay   = document.getElementById('navOverlay');
+
+  function openMenu() {
+    navMenu.classList.add('open');
+    hamburger.classList.add('open');
+    overlay.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeMenu() {
+    navMenu.classList.remove('open');
+    hamburger.classList.remove('open');
+    overlay.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  if (hamburger) hamburger.addEventListener('click', () => {
+    navMenu.classList.contains('open') ? closeMenu() : openMenu();
+  });
+
+  if (overlay) overlay.addEventListener('click', closeMenu);
+
+  // Tutup menu saat link diklik
+  document.querySelectorAll('.nav-menu a').forEach(link => {
+    link.addEventListener('click', closeMenu);
+  });
+})();
+
+/* ========================
    TAB SWITCHER — Experience Section
    Tambahkan di dalam <script> tag, atau di file script.js kamu
    ======================== */
